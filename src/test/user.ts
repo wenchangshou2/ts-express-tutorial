@@ -48,7 +48,7 @@ class UserTest {
     mongoose.Promise = global.Promise;
 
     //connect to mongoose and create model
-    const MONGODB_CONNECTION: string = "mongodb://localhost:27017/heros";
+    const MONGODB_CONNECTION: string = "mongodb://localhost:27017/wcs";
     let connection: mongoose.Connection = mongoose.createConnection(MONGODB_CONNECTION);
     UserTest.User = connection.model<IUserModel>("User", userSchema);
 

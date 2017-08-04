@@ -3,14 +3,17 @@ export class BaseRoute {
     protected title: string;
     private scripts: string[];
     constructor() {
+        console.log('constructor');
         this.title = "Tour of Heros";
         this.scripts = []
     }
     public addScript(src: string): BaseRoute {
+        console.log('addScript');
         this.scripts.push(src);
         return this;
     }
     public render(req: Request, res: Response, view: string, options?: Object) {
+        console.log('render');
         res.locals.BASE_URL = "/"
         res.locals.scripts = this.scripts
         res.locals.title = this.title
