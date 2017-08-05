@@ -50,7 +50,7 @@ class UserTest {
     //connect to mongoose and create model
     const MONGODB_CONNECTION: string = "mongodb://localhost:27017/wcs";
     let connection: mongoose.Connection = mongoose.createConnection(MONGODB_CONNECTION);
-    UserTest.User = connection.model<IUserModel>("User", userSchema);
+    UserTest.User = mongoose.model<IUserModel>("User", userSchema);
 
     //require chai and use should() assertions
     let chai = require("chai");
@@ -67,6 +67,8 @@ class UserTest {
 
   @test("should create a new User")
   public create() {
+    // let User:mongoose.Model<IUserModel>;
+    // User = mongoose.model<IUserModel>("User", userSchema);
     //create user and return promise
     return new UserTest.User(this.data).save().then(result => {
       //verify _id property exists

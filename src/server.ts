@@ -45,9 +45,11 @@ export class Server {
         this.app.use(methodOverride())
         global.Promise = require("q").Promise
         mongoose.Promise = global.Promise
-        let connection: mongoose.Connection = mongoose.createConnection(MONGODB_CONNECTION);
-
-        this.model.user = connection.model("User", userSchema);
+        mongoose.connect("mongodb://localhost:27017/mean-material-reactive");
+        mongoose.connection.on("error", error => {
+            console.error(error);
+        });
+        // this.model.user = connection.model("User", userSchema);
 
 
         this.app.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
